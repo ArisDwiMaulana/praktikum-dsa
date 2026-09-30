@@ -3,6 +3,7 @@ using namespace std;
 
 struct NodeLagu{
     string judul;
+    float durasi;
     NodeLagu *next;
     NodeLagu *prev;
 };
@@ -12,15 +13,19 @@ NodeLagu *tail = nullptr;
 
 void tambah(int kondisi){ // 1 untuk akhir, 2 untuk awal
     string judul;
+    float durasi;
     if (kondisi == 1) {
         cout<<"Tambah lagu di akhir: ";
     }else if (kondisi == 2) {
         cout<<"Tambah lagu di awal: ";
     }
     getline(cin, judul);
+    cout<<"Durasi (menit): ";
+    cin>>durasi;
 
     NodeLagu *newNode = new NodeLagu();
     newNode->judul = judul;
+    newNode->durasi = durasi;
     newNode->next = nullptr;
     newNode->prev = nullptr;
     if (head == nullptr) {
@@ -45,7 +50,7 @@ void tampilkan(int kondisi){ // 1 untuk depan -> belakang, 2 untuk belakang -> d
         int nomor = 1;
         cout<<"Playlist (depan -> belakang): "<<endl;
         while(temp != nullptr){
-            cout<<nomor<<". "<<temp->judul<<endl;
+            cout<<nomor<<". "<<temp->judul<<" ("<<temp->durasi<<" menit)"<<endl;
             temp = temp->next;
             nomor++;
         }
@@ -54,7 +59,7 @@ void tampilkan(int kondisi){ // 1 untuk depan -> belakang, 2 untuk belakang -> d
         int nomor = 1;
         cout<<"Playlist (belakang -> depan): "<<endl;
         while(temp != nullptr){
-            cout<<nomor<<". "<<temp->judul<<endl;
+            cout<<nomor<<". "<<temp->judul<<" ("<<temp->durasi<<" menit)"<<endl;
             temp = temp->prev;
             nomor++;
         }
