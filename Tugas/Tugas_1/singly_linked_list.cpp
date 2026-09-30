@@ -21,9 +21,11 @@ void tambahData(int nim, string nama, float ipk){
     if (head == nullptr) {
         head = newNode;
         tail = newNode;
+        cout<<"Data berhasil ditambahkan"<<endl;
     } else {
         tail->next = newNode;
         tail = newNode;
+        cout<<"Data berhasil ditambahkan"<<endl;
     }
 }
 
